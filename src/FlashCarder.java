@@ -5,6 +5,7 @@ import javax.swing.*;
 
 /**
  * @author Atlee
+ * @version 2013.09.22
  */
 public class FlashCarder {
 	private static final String TITLE = "Flash Carder";
