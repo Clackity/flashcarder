@@ -8,11 +8,11 @@ import javax.swing.*;
  * @version 2013.09.22
  */
 public class FlashCarder {
-	private static final String TITLE = "Flash Carder";
-	private static final String VERSION = "Version 2013.09.21";
+	private static final String TITLE = "FlashCarder";
+	private static final String VERSION = "Version 2013.09.22";
 
 // Look And Feel constants
-	private static final String LOOKANDFEEL = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+	private static final String LOOK_AND_FEEL = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 	private static final int MARGIN = 4;
 
 // GUI fields
@@ -95,7 +95,7 @@ public class FlashCarder {
 	}
 
 	private void setLookAndFeel() {
-		try { UIManager.setLookAndFeel(LOOKANDFEEL); }
+		try { UIManager.setLookAndFeel(LOOK_AND_FEEL); }
 		catch(Exception e) { /* no big deal, just a look and feel thing */ }
 	}
 
