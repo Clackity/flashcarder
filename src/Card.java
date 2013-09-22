@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Comparator;
 
 /**
  * @author Atlee
@@ -8,16 +9,24 @@ import java.io.IOException;
  * A two-sided card.
  */
 public class Card {
+// private data
 	private final String sideA, sideB;
 	private long lastSeenTime; // unix time in milliseconds
 	private int viewCount; // number of times viewed
 
+// public Comparators
+	public static final SideAComparator sideAComparator = new SideAComparator();
+	public static final SideBComparator sideBComparator = new SideBComparator();
+	public static final LastSeenTimeComparator lastSeenTimeComparator = new LastSeenTimeComparator();
+	public static final ViewCountComparator viewCountComparator = new ViewCountComparator();
+
+// public static methods
 	/**
 	 * Attempt to read one Card from the BufferedReader.
 	 * @param input An extant BufferedReader from a previous call to new BufferedReader(new FileReader(filename))
 	 * @return Either a new Card or null if there isn't an entire card to be read from the given input.
 	 */
-	public static Card loadFromFile(BufferedReader input) {
+	public static Card createFromFile(BufferedReader input) {
 		String sideA, sideB;
 		long lastSeenTime = 0;
 		int viewCount = 0;
@@ -49,6 +58,7 @@ public class Card {
 		return new Card(sideA, sideB, lastSeenTime, viewCount);
 	}
 
+// public methods
 	public Card(String sideA, String sideB, long lastSeenTime, int viewCount) {
 		this.sideA = sideA == null ? "" : sideA;
 		this.sideB = sideB == null ? "" : sideB;
@@ -94,5 +104,32 @@ public class Card {
 			output.newLine();
 		} catch(IOException e) { return false; }
 		return true;
+	}
+
+// private Comparator classes
+	private static class SideAComparator implements Comparator<Card> {
+		public int compare(Card card1, Card card2) {
+			return card1.sideA.compareTo(card2.sideA);
+		}
+	}
+
+	private static class SideBComparator implements Comparator<Card> {
+		public int compare(Card card1, Card card2) {
+			return card1.sideB.compareTo(card2.sideB);
+		}
+	}
+
+	private static class LastSeenTimeComparator implements Comparator<Card> {
+		public int compare(Card card1, Card card2) {
+			if(card1.lastSeenTime < card2.lastSeenTime) return -1;
+			if(card1.lastSeenTime == card2.lastSeenTime) return 0;
+			return 1;
+		}
+	}
+
+	private static class ViewCountComparator implements Comparator<Card> {
+		public int compare(Card card1, Card card2) {
+			return card1.viewCount - card2.viewCount;
+		}
 	}
 }
