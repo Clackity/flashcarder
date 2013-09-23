@@ -20,9 +20,6 @@ public class FlashCarder {
 	private JLabel fileNameLabel;
 	private FlashCardPanel flashCardPanel;
 	private JLabel statusLabel; // todo: implement this
-	private JButton retireButton;
-	private JButton freshButton;
-	private JButton toReviewButton;
 
 // file fields
 	private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
@@ -85,6 +82,7 @@ public class FlashCarder {
 			card.setSeen(false);
 			cardSetToReview.addCard(card);
 			card = null;
+			modified = true;
 		}
 	}
 
@@ -98,6 +96,7 @@ public class FlashCarder {
 			card.setSeen(true);
 			cardSetRetired.addCard(card);
 			card = null;
+			modified = true;
 		}
 	}
 
@@ -107,6 +106,23 @@ public class FlashCarder {
 			flashCardPanel.set(card.getSideA(), card.getSideB(), showSideBFirst);
 		} else {
 			flashCardPanel.set("", "", showSideBFirst);
+		}
+	}
+
+	/**
+	 * If a file is open and it's changed (card stats and whatnot),
+	 * then this method will ask the user whether to save it,
+	 * and then save it.
+	 */
+	private void saveProgress() {
+		if(modified && fileName != null) {
+			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame
+				,new JLabel("Save progress with " + fileName + " ?")
+				,"Unsaved Progress"
+				,JOptionPane.YES_NO_OPTION
+			)) {
+				saveToFile(fileName);
+			}
 		}
 	}
 
@@ -139,20 +155,22 @@ public class FlashCarder {
 
 	private JPanel makeBottomButtonPanel() {
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 3, MARGIN, MARGIN));
-		buttonPanel.setPreferredSize(new Dimension(1, 40));
+		buttonPanel.setPreferredSize(new Dimension(1, 50));
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, MARGIN, MARGIN, MARGIN));
 
-		retireButton = new JButton("Known");
-		retireButton.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleRetireButton(); }});
-		buttonPanel.add(retireButton);
+		JButton btn;
 
-		freshButton = new JButton("Fresh");
-		freshButton.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleWorkingButton(); }});
-		buttonPanel.add(freshButton);
+		btn = new JButton("Known");
+		btn.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleRetireButton(); }});
+		buttonPanel.add(btn);
 
-		toReviewButton = new JButton("To Review");
-		toReviewButton.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleToReviewButton(); }});
-		buttonPanel.add(toReviewButton);
+		btn = new JButton("Fresh");
+		btn.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleWorkingButton(); }});
+		buttonPanel.add(btn);
+
+		btn = new JButton("To Review");
+		btn.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleToReviewButton(); }});
+		buttonPanel.add(btn);
 
 		return buttonPanel;
 	}
@@ -230,6 +248,8 @@ public class FlashCarder {
 	private void setLookAndFeel() {
 		try { UIManager.setLookAndFeel(LOOK_AND_FEEL); }
 		catch(Exception e) { /* no big deal, just a look and feel thing */ }
+		System.setProperty("awt.useSystemAAFontSettings", "on");
+		System.setProperty("swing.aatext", "true");
 	}
 
 // private GUI helper methods
@@ -242,19 +262,13 @@ public class FlashCarder {
 
 // private GUI handler methods
 	private void handleQuitRequest() {
+		saveProgress();
+
 		System.exit(0);
 	}
 
 	private void handleFileOpen() {
-		if(modified && fileName != null) {
-			if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame
-				,new JLabel("Save progress with " + fileName + " ?")
-				,"Unsaved Progress"
-				,JOptionPane.YES_NO_OPTION
-			)) {
-				saveToFile(fileName);
-			}
-		}
+		saveProgress();
 
 		setFileName(null);
 

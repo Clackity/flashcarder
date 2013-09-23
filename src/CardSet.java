@@ -24,6 +24,7 @@ import java.util.TreeSet;
  */
 public class CardSet {
 // defaults
+	private static final String CHARSET = "ISO-8859-1";
 	private static final Comparator<Card> COMPARATOR = Card.randomComparator;
 	private static final int INITIAL_CAPACITY = 11; // default PriorityQueue capacity
 
@@ -41,10 +42,10 @@ public class CardSet {
 	}
 
 	public static CardSet createFromFile(String fileName, Comparator<Card> cardSortingComparator) {
-		FileReader reader;
-		try { reader = new FileReader(fileName); }
-		catch(FileNotFoundException e) { return null; }
-		BufferedReader bufferedReader = new BufferedReader(reader);
+		InputStreamReader inStream;
+		try { inStream = new InputStreamReader(new FileInputStream(fileName), CHARSET); }
+		catch(IOException e) { return null; }
+		BufferedReader bufferedReader = new BufferedReader(inStream);
 
 		PriorityQueue<Card> newSet = new PriorityQueue<Card>(INITIAL_CAPACITY, cardSortingComparator);
 		for(;;) {
@@ -55,7 +56,7 @@ public class CardSet {
 
 		try {
 			bufferedReader.close();
-			reader.close(); // just in case
+			inStream.close(); // just in case
 		} catch(IOException e) { /* don't care */ }
 
 		return new CardSet(newSet);
@@ -146,10 +147,10 @@ public class CardSet {
 	 * @return True on success, false if something goes wrong.
 	 */
 	public boolean writeToFile(String fileName) {
-		FileWriter writer;
-		try { writer = new FileWriter(fileName); }
+		OutputStreamWriter outStream;
+		try { outStream = new OutputStreamWriter(new FileOutputStream(fileName), CHARSET); }
 		catch(IOException e) { return false; }
-		BufferedWriter bufferedWriter = new BufferedWriter(writer);
+		BufferedWriter bufferedWriter = new BufferedWriter(outStream);
 
 		boolean error = false;
 		for(Card card : set) {
@@ -161,7 +162,7 @@ public class CardSet {
 
 		try {
 			bufferedWriter.close();
-			writer.close();
+			outStream.close();
 		} catch(IOException e) { return false; }
 
 		return !error;
