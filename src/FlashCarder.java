@@ -132,6 +132,7 @@ public class FlashCarder {
 		CardSet setToWrite = new CardSet(cardSetWorking);
 		setToWrite.addCardSet(cardSetToReview);
 		setToWrite.addCardSet(cardSetRetired);
+		if(card != null) setToWrite.addCard(card);
 
 		if(!setToWrite.writeToFile(fileName)) {
 			JOptionPane.showMessageDialog(frame
