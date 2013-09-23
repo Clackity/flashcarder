@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="flashcarder:jar">
+    <output-path>$PROJECT_DIR$/jar/</output-path>
+    <root id="archive" name="flashcarder.jar">
+      <element id="module-output" name="flashcarder" />
+    </root>
+  </artifact>
+</component>

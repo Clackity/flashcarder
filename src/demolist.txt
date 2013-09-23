@@ -1,0 +1,32 @@
+card 1 side a
+card 1 side b
+
+card 2 side a
+card 2 side b
+
+card 3 side a
+card 3 side b
+
+you can see
+how this goes
+
+a pair of lines makes
+the two sides of a card
+
+an empty line between cards
+separates them from each other
+
+when an open file is written
+cards gain lines of numbers
+
+the first number
+is the "ease bias"
+
+the second is
+the unix "last seen" time
+
+the third is
+the view count
+
+the end
+of this demo
