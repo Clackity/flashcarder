@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.Random;
 
 /**
  * @author Atlee
@@ -10,14 +11,21 @@ import java.util.Comparator;
  */
 public class Card {
 // private data
-	private final String sideA, sideB;
+	private int easeBias; // increment when easy, decrement when difficult
 	private long lastSeenTime; // unix time in milliseconds
+	private final String sideA, sideB;
 	private int viewCount; // number of times viewed
 
-// public Comparators
+// private static data
+	private static final Random random = new Random();
+	private static int randomValue;
+
+// public static Comparators
+	public static final EaseBiasComparator easeBiasComparator = new EaseBiasComparator();
+	public static final LastSeenTimeComparator lastSeenTimeComparator = new LastSeenTimeComparator();
+	public static final RandomComparator randomComparator = new RandomComparator();
 	public static final SideAComparator sideAComparator = new SideAComparator();
 	public static final SideBComparator sideBComparator = new SideBComparator();
-	public static final LastSeenTimeComparator lastSeenTimeComparator = new LastSeenTimeComparator();
 	public static final ViewCountComparator viewCountComparator = new ViewCountComparator();
 
 // public static methods
@@ -28,6 +36,7 @@ public class Card {
 	 */
 	public static Card createFromFile(BufferedReader input) {
 		String sideA, sideB;
+		int easeBias = 0;
 		long lastSeenTime = 0;
 		int viewCount = 0;
 
@@ -39,39 +48,62 @@ public class Card {
 			if(sideA.isEmpty() || sideB.isEmpty()) return null; // and they shouldn't be empty
 		} catch(IOException e) { return null; }
 		try { // these won't necessarily be present in the file
-			String lastSeenTimeString = input.readLine();
-			if(lastSeenTimeString != null) {
-				if(!lastSeenTimeString.isEmpty()) {
-					try { lastSeenTime = Long.parseLong(lastSeenTimeString); }
+
+			String easeBiasString = input.readLine(); // ease bias
+			if(easeBiasString != null) {
+				if(!easeBiasString.isEmpty()) {
+					try { easeBias = Integer.parseInt(easeBiasString); }
 					catch(NumberFormatException e) { /* no big deal */ }
-					String viewCountString = input.readLine();
-					if(viewCountString != null) {
-						if(!viewCountString.isEmpty()) {
-							try { viewCount = Integer.parseInt(viewCountString); }
+
+					String lastSeenTimeString = input.readLine(); // last seen time
+					if(lastSeenTimeString != null) {
+						if(!lastSeenTimeString.isEmpty()) {
+							try { lastSeenTime = Long.parseLong(lastSeenTimeString); }
 							catch(NumberFormatException e) { /* no big deal */ }
+
+							String viewCountString = input.readLine(); // view count
+							if(viewCountString != null) {
+								if(!viewCountString.isEmpty()) {
+									try { viewCount = Integer.parseInt(viewCountString); }
+									catch(NumberFormatException e) { /* no big deal */ }
+								}
+							}
 						}
 					}
 				}
 			}
 		} catch(IOException e) { /* don't care */ }
 
-		return new Card(sideA, sideB, lastSeenTime, viewCount);
+		return new Card(sideA, sideB, easeBias, lastSeenTime, viewCount);
+	}
+
+	/**
+	 * Randomizes the static value used by the RandomComparator.
+	 */
+	public static void randomize() {
+		randomValue = random.nextInt();
 	}
 
 // public methods
-	public Card(String sideA, String sideB, long lastSeenTime, int viewCount) {
+	public Card(String sideA, String sideB) {
+		this(sideA, sideB, 0, 0, 0);
+	}
+
+	public Card(String sideA, String sideB, int easeBias, long lastSeenTime, int viewCount) {
+		this.easeBias = easeBias;
+		this.lastSeenTime = lastSeenTime;
 		this.sideA = sideA == null ? "" : sideA;
 		this.sideB = sideB == null ? "" : sideB;
-		this.lastSeenTime = lastSeenTime;
 		this.viewCount = viewCount;
+		randomize();
+	}
+
+	public int getEaseBias() {
+		return easeBias;
 	}
 
 	public long getLastSeenTime() {
 		return lastSeenTime;
-	}
-
-	public int getViewCount() {
-		return viewCount;
 	}
 
 	public String getSideA() {
@@ -82,11 +114,17 @@ public class Card {
 		return sideB;
 	}
 
-	public void incrementViewCount() {
-		++viewCount;
+	public int getViewCount() {
+		return viewCount;
 	}
 
-	public void setLastSeenTimeToNow() {
+	/**
+	 * Update this card's view statistics and ease bias.
+	 * @param wasEasy Whether this card was easy or difficult.
+	 */
+	public void setSeen(boolean wasEasy) {
+		easeBias += wasEasy ? 1 : -1;
+		++viewCount;
 		lastSeenTime = System.currentTimeMillis();
 	}
 
@@ -99,6 +137,7 @@ public class Card {
 		try {
 			output.write(sideA); output.newLine();
 			output.write(sideB); output.newLine();
+			output.write(Integer.toString(easeBias)); output.newLine();
 			output.write(Long.toString(lastSeenTime)); output.newLine();
 			output.write(Integer.toString(viewCount)); output.newLine();
 			output.newLine();
@@ -107,6 +146,28 @@ public class Card {
 	}
 
 // private Comparator classes
+	private static class EaseBiasComparator implements Comparator<Card> {
+		public int compare(Card card1, Card card2) {
+			return card1.easeBias - card2.easeBias;
+		}
+	}
+
+	private static class LastSeenTimeComparator implements Comparator<Card> {
+		public int compare(Card card1, Card card2) {
+			if(card1.lastSeenTime < card2.lastSeenTime) return -1;
+			if(card1.lastSeenTime == card2.lastSeenTime) return 0;
+			return 1;
+		}
+	}
+
+	private static class RandomComparator implements Comparator<Card> {
+		public int compare(Card card1, Card card2) {
+			int hash1 = card1.hashCode() ^ randomValue;
+			int hash2 = card2.hashCode() ^ randomValue;
+			return hash1 - hash2;
+		}
+	}
+
 	private static class SideAComparator implements Comparator<Card> {
 		public int compare(Card card1, Card card2) {
 			return card1.sideA.compareTo(card2.sideA);
@@ -116,14 +177,6 @@ public class Card {
 	private static class SideBComparator implements Comparator<Card> {
 		public int compare(Card card1, Card card2) {
 			return card1.sideB.compareTo(card2.sideB);
-		}
-	}
-
-	private static class LastSeenTimeComparator implements Comparator<Card> {
-		public int compare(Card card1, Card card2) {
-			if(card1.lastSeenTime < card2.lastSeenTime) return -1;
-			if(card1.lastSeenTime == card2.lastSeenTime) return 0;
-			return 1;
 		}
 	}
 

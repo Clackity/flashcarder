@@ -7,13 +7,16 @@ import javax.swing.border.Border;
 /**
  * @author Atlee
  *
- * A FlashCard JPanel class.
+ * A FlashCardPanel JPanel class.
  * Acts as a two sided text flash card that flips over when clicked with the mouse.
  * Also includes a flip method in case you want to flip it with buttons or the keyboard or something.
  *
+ * Todo:
+ * 		deal with resizing events by adjusting bar size and font size, if necessary
+ *
  * Example:
  *		Container contentPane = frame.getContentPane(); // or whatever container you want to display it in
- *		FlashCard card = new FlashCard(); // defaults to 400 x 300 with a red side A and a blue side B.
+ *		FlashCardPanel card = new FlashCardPanel(); // defaults to 400 x 300 with a red side A and a blue side B.
  *		contentPane.add(card);
  *		.. setup rest of UI, and then:
  *		card.set("el mar", "the sea", false);
@@ -27,7 +30,7 @@ import javax.swing.border.Border;
  *
  * Feel free to poke around with the Look & Feel constants below to further customize your card.
  */
-public class FlashCard extends JPanel {
+public class FlashCardPanel extends JPanel {
 // Look & Feel constants
 	private static final Border OUTER_BORDER = BorderFactory.createEmptyBorder(3, 3, 3, 3);
 	private static final Border INNER_BORDER = BorderFactory.createLineBorder(Color.BLACK, 3);
@@ -59,7 +62,7 @@ public class FlashCard extends JPanel {
 	/**
 	 * Creates this card with default dimensions and colors.
 	 */
-	public FlashCard() {
+	public FlashCardPanel() {
 		this(WIDTH, HEIGHT, COLOR_A, COLOR_B);
 	}
 
@@ -68,7 +71,7 @@ public class FlashCard extends JPanel {
 	 * @param width Interior width.
 	 * @param height Interior height.
 	 */
-	public FlashCard(int width, int height) {
+	public FlashCardPanel(int width, int height) {
 		this(width, height, COLOR_A, COLOR_B);
 	}
 
@@ -79,7 +82,7 @@ public class FlashCard extends JPanel {
 	 * @param colorA The Color of side A.
 	 * @param colorB The Color of side B.
 	 */
-	public FlashCard(int width, int height, Color colorA, Color colorB) {
+	public FlashCardPanel(int width, int height, Color colorA, Color colorB) {
 		super(new BorderLayout(0, 0));
 
 		this.width = width;
