@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
@@ -43,14 +44,14 @@ public class FlashCardPanel extends JPanel {
 	private static final Color COLOR_B = new Color(0.2f, 0.3f, 0.95f);
 	private static final String FONT_NAME = "Arial Bold";
 	private static final int FONT_STYLE = Font.PLAIN;
-	private static final int FONT_SIZE = 32; // consider this a suggestion
-	private static final Font FONT = new Font(FONT_NAME, FONT_STYLE, FONT_SIZE);
+	private static final int FONT_SIZE_MIN = 4;
+	private static final int FONT_SIZE_MAX = 120; // consider this a suggestion
+	private static final Font FONT = new Font(FONT_NAME, FONT_STYLE, FONT_SIZE_MAX);
 
 // UI elements
 	private JPanel colorBar;
 	private JLabel contentLabel;
 	private Color colorA, colorB;
-	private int width;
 
 // card content
 	private String sideA, sideB;
@@ -84,23 +85,20 @@ public class FlashCardPanel extends JPanel {
 	 */
 	public FlashCardPanel(int width, int height, Color colorA, Color colorB) {
 		super(new BorderLayout(0, 0));
+		setPreferredSize(new Dimension(width, height));
 
-		this.width = width;
 		this.colorA = colorA;
 		this.colorB = colorB;
 
 		setBorder(BORDER);
 		addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleMousePressed(); }});
 
-		int barHeight = (int)((float)height * BAR_RATIO);
-
 		colorBar = new JPanel();
-		colorBar.setPreferredSize(new Dimension(width, barHeight));
+		//adjustColorBarSize();
 		colorBar.setBorder(BAR_BORDER);
 		add(colorBar, BorderLayout.NORTH);
 
-		contentLabel = new JLabel("content", JLabel.CENTER);
-		contentLabel.setPreferredSize(new Dimension(width, height - barHeight));
+		contentLabel = new JLabel("", JLabel.CENTER);
 		contentLabel.setVerticalAlignment(JLabel.CENTER);
 		JPanel contentPanel = new JPanel();
 		contentPanel.add(contentLabel);
@@ -145,9 +143,6 @@ public class FlashCardPanel extends JPanel {
 		colorBar.setBackground(showingSideB ? colorB : colorA);
 
 		String text = showingSideB ? sideB : sideA;
-		Font font = findBestFontSize(FONT, text, 4, FONT_SIZE, FONT_SIZE);
-
-		contentLabel.setFont(font);
 		contentLabel.setText(text);
 	}
 
@@ -157,14 +152,29 @@ public class FlashCardPanel extends JPanel {
 	}
 
 // private GUI helper methods
-	private boolean isFontSmallEnough(Font font, String text) {
-		FontMetrics metrics = new FontMetrics(font) {};
-		Rectangle2D bounds = metrics.getStringBounds(text, null);
-		int widthInPixels = (int)bounds.getWidth();
-		return widthInPixels <= width;
+	private void adjustColorBarSize() {
+		Rectangle2D bounds = getBounds();
+		int barHeight = (int)(bounds.getHeight() * BAR_RATIO);
+		colorBar.setPreferredSize(new Dimension((int)bounds.getWidth(), barHeight));
 	}
 
-	private Font findBestFontSize(Font font, String text, int minFontSize, int fontSize, int maxFontSize) {
+	private void adjustContentFontSize() {
+		contentLabel.setFont(findBestFontSize(FONT, contentLabel.getText()));
+	}
+
+	private boolean isFontSmallEnough(Font font, String text) {
+		FontMetrics metrics = new FontMetrics(font) {};
+		Rectangle2D textBounds = metrics.getStringBounds(text, null);
+		Rectangle2D panelBounds = contentLabel.getBounds();
+		return textBounds.getWidth() <= panelBounds.getWidth()
+			&& textBounds.getHeight() <= panelBounds.getHeight();
+	}
+
+	private Font findBestFontSize(Font font, String text) {
+		return recursiveFindBestFontSize(font, text, FONT_SIZE_MIN, FONT_SIZE_MAX, FONT_SIZE_MAX);
+	}
+
+	private Font recursiveFindBestFontSize(Font font, String text, int minFontSize, int fontSize, int maxFontSize) {
 		if(isFontSmallEnough(font, text)) { // the best size is between fontSize and maxFontSize
 			if(fontSize >= maxFontSize - 1) return font; // fontSize is the best
 			minFontSize = fontSize;
@@ -175,6 +185,19 @@ public class FlashCardPanel extends JPanel {
 		} else return font; // can't get any smaller
 
 		font = new Font(FONT_NAME, FONT_STYLE, fontSize);
-		return findBestFontSize(font, text, minFontSize, fontSize, maxFontSize);
+		return recursiveFindBestFontSize(font, text, minFontSize, fontSize, maxFontSize);
+	}
+
+// Component overrides
+	@Override
+	public void paint(Graphics g) {
+		update(g);
+	}
+
+	@Override
+	public void update(Graphics g) {
+		adjustColorBarSize();
+		adjustContentFontSize();
+		super.paint(g);
 	}
 }

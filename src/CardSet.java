@@ -24,8 +24,8 @@ import java.util.TreeSet;
  */
 public class CardSet {
 // defaults
-	private static final String CHARSET = "ISO-8859-1";
-	private static final Comparator<Card> COMPARATOR = Card.randomComparator;
+	private static final String CHARSET = "ISO-8859-1"; // important for reading and writing non-US characters
+	private static final Comparator<Card> COMPARATOR = Card.lastSeenTimeComparator;
 	private static final int INITIAL_CAPACITY = 11; // default PriorityQueue capacity
 
 // data
