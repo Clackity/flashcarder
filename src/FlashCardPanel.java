@@ -58,6 +58,8 @@ public class FlashCardPanel extends JPanel {
 
 // state
 	private boolean showingSideB;
+	private Rectangle2D totalSize;
+	private Dimension interiorSize;
 
 // public methods
 	/**
@@ -84,7 +86,7 @@ public class FlashCardPanel extends JPanel {
 	 * @param colorB The Color of side B.
 	 */
 	public FlashCardPanel(int width, int height, Color colorA, Color colorB) {
-		super(new BorderLayout(0, 0));
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(width, height));
 
 		this.colorA = colorA;
@@ -95,13 +97,14 @@ public class FlashCardPanel extends JPanel {
 
 		colorBar = new JPanel();
 		colorBar.setBorder(BAR_BORDER);
-		add(colorBar, BorderLayout.NORTH);
+		add(colorBar);
 
 		contentLabel = new JLabel("", JLabel.CENTER);
+		contentLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		contentLabel.setVerticalAlignment(JLabel.CENTER);
 		JPanel contentPanel = new JPanel();
 		contentPanel.add(contentLabel);
-		add(contentLabel, BorderLayout.CENTER);
+		add(contentLabel);
 
 		set("", "", false);
 	}
@@ -150,11 +153,26 @@ public class FlashCardPanel extends JPanel {
 		flip();
 	}
 
-// private GUI helper methods
-	private void adjustColorBarSize() {
-		Rectangle2D bounds = getBounds();
-		int barHeight = (int)(bounds.getHeight() * BAR_RATIO);
-		colorBar.setPreferredSize(new Dimension((int)bounds.getWidth(), barHeight));
+	private void updateDimension() {
+		Rectangle2D newSize = getBounds();
+		if(totalSize == null
+			|| newSize.getWidth() != totalSize.getWidth()
+			|| newSize.getHeight() != totalSize.getHeight()
+		) {
+			totalSize = newSize;
+			Insets insets = getInsets();
+			interiorSize = new Dimension(
+				(int)totalSize.getWidth() - insets.left - insets.right
+				,(int)totalSize.getHeight() - insets.top - insets.bottom
+			);
+			Dimension barSize = new Dimension(interiorSize.width, (int)((float)interiorSize.height * BAR_RATIO));
+			colorBar.setPreferredSize(barSize);
+			colorBar.setSize(barSize);
+			Dimension contentSize = new Dimension(interiorSize.width, interiorSize.height - barSize.height);
+			contentLabel.setPreferredSize(contentSize);
+			contentLabel.setSize(contentSize);
+			contentLabel.setFont(findBestFontSize(FONT, contentLabel.getText()));
+		}
 	}
 
 	private void adjustContentFontSize() {
@@ -164,7 +182,7 @@ public class FlashCardPanel extends JPanel {
 	private boolean isFontSmallEnough(Font font, String text) {
 		FontMetrics metrics = new FontMetrics(font) {};
 		Rectangle2D textBounds = metrics.getStringBounds(text, null);
-		Rectangle2D panelBounds = contentLabel.getBounds();
+		Dimension panelBounds = contentLabel.getSize();
 		return textBounds.getWidth() <= panelBounds.getWidth()
 			&& textBounds.getHeight() <= panelBounds.getHeight()
 			&& textBounds.getHeight() * 8.0 <= panelBounds.getWidth();
@@ -191,13 +209,7 @@ public class FlashCardPanel extends JPanel {
 // Component overrides
 	@Override
 	public void paint(Graphics g) {
-		update(g);
-	}
-
-	@Override
-	public void update(Graphics g) {
-		adjustColorBarSize();
-		adjustContentFontSize();
+		updateDimension();
 		super.paint(g);
 	}
 }
