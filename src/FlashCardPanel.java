@@ -86,7 +86,8 @@ public class FlashCardPanel extends JPanel {
 	 * @param colorB The Color of side B.
 	 */
 	public FlashCardPanel(int width, int height, Color colorA, Color colorB) {
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setLayout(null);
+		//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(width, height));
 
 		this.colorA = colorA;
@@ -100,8 +101,8 @@ public class FlashCardPanel extends JPanel {
 		add(colorBar);
 
 		contentLabel = new JLabel("", JLabel.CENTER);
-		contentLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-		contentLabel.setVerticalAlignment(JLabel.CENTER);
+		contentLabel.setAlignmentX(CENTER_ALIGNMENT);
+		//contentLabel.setVerticalAlignment(JLabel.CENTER);
 		JPanel contentPanel = new JPanel();
 		contentPanel.add(contentLabel);
 		add(contentLabel);
@@ -146,6 +147,7 @@ public class FlashCardPanel extends JPanel {
 
 		String text = showingSideB ? sideB : sideA;
 		contentLabel.setText(text);
+		contentLabel.setFont(findBestFontSize(FONT, text));
 	}
 
 // private GUI handler methods
@@ -166,17 +168,13 @@ public class FlashCardPanel extends JPanel {
 				,(int)totalSize.getHeight() - insets.top - insets.bottom
 			);
 			Dimension barSize = new Dimension(interiorSize.width, (int)((float)interiorSize.height * BAR_RATIO));
-			colorBar.setPreferredSize(barSize);
 			colorBar.setSize(barSize);
+			colorBar.setLocation(insets.left, insets.top);
 			Dimension contentSize = new Dimension(interiorSize.width, interiorSize.height - barSize.height);
-			contentLabel.setPreferredSize(contentSize);
 			contentLabel.setSize(contentSize);
+			contentLabel.setLocation(insets.left, insets.top + barSize.height);
 			contentLabel.setFont(findBestFontSize(FONT, contentLabel.getText()));
 		}
-	}
-
-	private void adjustContentFontSize() {
-		contentLabel.setFont(findBestFontSize(FONT, contentLabel.getText()));
 	}
 
 	private boolean isFontSmallEnough(Font font, String text) {
