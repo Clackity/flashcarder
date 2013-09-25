@@ -44,8 +44,8 @@ public class FlashCardPanel extends JPanel {
 	private static final Color COLOR_B = new Color(0.2f, 0.3f, 0.95f);
 	private static final String FONT_NAME = "Arial Bold";
 	private static final int FONT_STYLE = Font.PLAIN;
-	private static final int FONT_SIZE_MIN = 4;
-	private static final int FONT_SIZE_MAX = 120; // consider this a suggestion
+	private static final int FONT_SIZE_MIN = 8; // these take effect in isFontSmallEnough(...)
+	private static final int FONT_SIZE_MAX = 120;
 	private static final Font FONT = new Font(FONT_NAME, FONT_STYLE, FONT_SIZE_MAX);
 
 // UI elements
@@ -94,7 +94,6 @@ public class FlashCardPanel extends JPanel {
 		addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleMousePressed(); }});
 
 		colorBar = new JPanel();
-		//adjustColorBarSize();
 		colorBar.setBorder(BAR_BORDER);
 		add(colorBar, BorderLayout.NORTH);
 
@@ -167,7 +166,8 @@ public class FlashCardPanel extends JPanel {
 		Rectangle2D textBounds = metrics.getStringBounds(text, null);
 		Rectangle2D panelBounds = contentLabel.getBounds();
 		return textBounds.getWidth() <= panelBounds.getWidth()
-			&& textBounds.getHeight() <= panelBounds.getHeight();
+			&& textBounds.getHeight() <= panelBounds.getHeight()
+			&& textBounds.getHeight() * 8.0 <= panelBounds.getWidth();
 	}
 
 	private Font findBestFontSize(Font font, String text) {

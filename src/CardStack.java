@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.TreeSet;
 
 /**
  * @author Atlee
@@ -10,9 +9,9 @@ import java.util.TreeSet;
  * Supports sorting, though it isn't strictly required.
  *
  * Example:
- * 		CardSet cardSet = CardSet.createFromFile("somecards.txt");
+ * 		CardStack cardSet = CardStack.createFromFile("somecards.txt");
  *	 	if(cardSet == null) throw new Exception("problem reading file");
- *	 	CardSet seenCards = new CardSet();
+ *	 	CardStack seenCards = new CardStack();
  *		while(!cardSet.isEmpty()) {
  * 			Card card = cardSet.removeNextCard();
  * 			// .. show card ...
@@ -22,7 +21,7 @@ import java.util.TreeSet;
  *		seenCards.writeToFile("somecards.txt");
  *
  */
-public class CardSet {
+public class CardStack {
 // defaults
 	private static final String CHARSET = "ISO-8859-1"; // important for reading and writing non-US characters
 	private static final Comparator<Card> COMPARATOR = Card.lastSeenTimeComparator;
@@ -33,15 +32,15 @@ public class CardSet {
 
 // public static methods
 	/**
-	 * Creates a new CardSet by reading it from a file.
+	 * Creates a new CardStack by reading it from a file.
 	 * @param fileName The name of the file to open and read from.
-	 * @return A new CardSet or null if something goes wrong.
+	 * @return A new CardStack or null if something goes wrong.
 	 */
-	public static CardSet createFromFile(String fileName) {
+	public static CardStack createFromFile(String fileName) {
 		return createFromFile(fileName, COMPARATOR);
 	}
 
-	public static CardSet createFromFile(String fileName, Comparator<Card> cardSortingComparator) {
+	public static CardStack createFromFile(String fileName, Comparator<Card> cardSortingComparator) {
 		InputStreamReader inStream;
 		try { inStream = new InputStreamReader(new FileInputStream(fileName), CHARSET); }
 		catch(IOException e) { return null; }
@@ -59,7 +58,7 @@ public class CardSet {
 			inStream.close(); // just in case
 		} catch(IOException e) { /* don't care */ }
 
-		return new CardSet(newSet);
+		return new CardStack(newSet);
 	}
 
 // public methods
@@ -67,7 +66,7 @@ public class CardSet {
 	 * Default constructor.
 	 * Starts empty and will sort by the default COMPARATOR defined up top.
 	 */
-	public CardSet() {
+	public CardStack() {
 		this(COMPARATOR);
 	}
 
@@ -76,7 +75,7 @@ public class CardSet {
 	 * Starts empty and will sort by the indicated Card comparator.
 	 * @param cardSortingComparator The Card comparator from the Card class.
 	 */
-	public CardSet(Comparator<Card> cardSortingComparator) {
+	public CardStack(Comparator<Card> cardSortingComparator) {
 		this(new PriorityQueue<Card>(INITIAL_CAPACITY, cardSortingComparator));
 	}
 
@@ -85,16 +84,16 @@ public class CardSet {
 	 * Starts with the given PriorityQueue.
 	 * @param extantSet The PriorityQueue to share.
 	 */
-	public CardSet(PriorityQueue<Card> extantSet) {
+	public CardStack(PriorityQueue<Card> extantSet) {
 		set = extantSet;
 	}
 
 	/**
 	 * Copy constructor.
 	 * Starts with a shallow copy of the given set.
-	 * @param copyFromSet The CardSet to copy from.
+	 * @param copyFromSet The CardStack to copy from.
 	 */
-	public CardSet(CardSet copyFromSet) {
+	public CardStack(CardStack copyFromSet) {
 		if(copyFromSet != null && copyFromSet.set != null) {
 			set = new PriorityQueue<Card>(copyFromSet.set);
 		} else {
@@ -111,18 +110,25 @@ public class CardSet {
 	}
 
 	/**
-	 * Adds an entire CardSet to this set in sorted order.
-	 * @param cardSet The CardSet to add to this set.
+	 * Adds an entire CardStack to this set in sorted order.
+	 * @param cardStack The CardStack to add to this set.
 	 */
-	public void addCardSet(CardSet cardSet) {
-		if(cardSet != null) set.addAll(cardSet.set);
+	public void addCardSet(CardStack cardStack) {
+		if(cardStack != null) set.addAll(cardStack.set);
 	}
 
 	/**
-	 * Empties this set of all cards.
+	 * Empties this stack of all cards.
 	 */
 	public void clear() {
 		set.clear();
+	}
+
+	/**
+	 * @return The number of Cards in this stack.
+	 */
+	public int getCount() {
+		return set != null ? set.size() : 0;
 	}
 
 	/**
