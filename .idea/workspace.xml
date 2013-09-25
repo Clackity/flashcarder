@@ -7,14 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39c41039-ea7a-40c5-9936-07f83781d1b7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CardStackPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/KeyListenerDefault.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jar/flashcarder.jar" afterPath="$PROJECT_DIR$/jar/flashcarder.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FlashCardPanel.java" afterPath="$PROJECT_DIR$/src/FlashCardPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FlashCarder.java" afterPath="$PROJECT_DIR$/src/FlashCarder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\CardSet.java" afterPath="$PROJECT_DIR$/src/CardStack.java" />
     </list>
     <ignored path="flashcarder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,7 +17,7 @@
     <file path="$PROJECT_DIR$/../MatrixGUI/src/MatrixGUI.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379811142710" ignored="false" />
     <file path="/fragment.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379919492896" ignored="false" />
     <file path="/FlashCard.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379833790384" ignored="false" />
-    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380067919757" ignored="false" />
+    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380077043891" ignored="false" />
     <file path="/Card.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379892982142" ignored="false" />
     <file path="/Main.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379844855879" ignored="false" />
     <file path="/CardSet.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380051763231" ignored="false" />
@@ -108,7 +103,7 @@
       <file leaf-file-name="FlashCarder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FlashCarder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="371" column="0" selection-start="11103" selection-end="11103" vertical-scroll-proportion="0.826506">
+            <state line="11" column="61" selection-start="273" selection-end="273" vertical-scroll-proportion="0.23855421">
               <folding />
             </state>
           </provider>
@@ -540,7 +535,11 @@
       <created>1380057189442</created>
       <updated>1380057189442</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="new visual stacks">
+      <created>1380077047074</created>
+      <updated>1380077047074</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -611,7 +610,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="better component resizing" />
+    <option name="LAST_COMMIT_MESSAGE" value="new visual stacks" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -635,6 +634,7 @@
     <MESSAGE value="now with a jar" />
     <MESSAGE value="corrected save bug" />
     <MESSAGE value="better component resizing" />
+    <MESSAGE value="new visual stacks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -745,7 +745,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FlashCarder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="0" selection-start="11103" selection-end="11103" vertical-scroll-proportion="0.826506">
+        <state line="11" column="61" selection-start="273" selection-end="273" vertical-scroll-proportion="0.23855421">
           <folding />
         </state>
       </provider>

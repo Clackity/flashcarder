@@ -5,11 +5,11 @@ import javax.swing.*;
 
 /**
  * @author Atlee
- * @version 2013.09.22
+ * @version 2013.09.24
  */
 public class FlashCarder {
 	private static final String TITLE = "FlashCarder";
-	private static final String VERSION = "Version 2013.09.22";
+	private static final String VERSION = "Version 2013.09.24";
 
 // Look & Feel constants
 	private static final String LOOK_AND_FEEL = UIManager.getSystemLookAndFeelClassName();
