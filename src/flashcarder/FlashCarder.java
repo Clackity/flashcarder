@@ -67,11 +67,9 @@ public class FlashCarder {
 	/**
 	 * Puts the current Card back into the working set.
 	 * Does not mark the card as seen.
-	 * Does call Card.randomize().
 	 */
 	private void putCardInWorkingStack() {
 		if(cardStackWorking != null && card != null) {
-			Card.randomize();
 			cardStackWorking.addCard(card);
 			cardStackWorkingPanel.setCurrentCount(cardStackWorking.getCount());
 			card = null;
@@ -138,8 +136,8 @@ public class FlashCarder {
 		if(cardStackWorking == null) return true; // nothing saved
 
 		CardStack setToWrite = new CardStack(cardStackWorking);
-		setToWrite.addCardSet(cardStackHard);
-		setToWrite.addCardSet(cardStackEasy);
+		setToWrite.addCardStack(cardStackHard);
+		setToWrite.addCardStack(cardStackEasy);
 		if(card != null) setToWrite.addCard(card);
 
 		if(!setToWrite.writeToFile(fileName)) {
@@ -292,6 +290,7 @@ public class FlashCarder {
 				,JOptionPane.ERROR_MESSAGE
 			);
 		} else {
+			cardStackWorking.shuffle();
 			int totalCards = cardStackWorking.getCount();
 			cardStackWorkingPanel.setCapacity(totalCards);
 			cardStackWorkingPanel.setCurrentCount(cardStackWorking.getCount());

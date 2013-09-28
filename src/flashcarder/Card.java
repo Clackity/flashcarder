@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Comparator;
-import java.util.Random;
 
 /**
  * @author Atlee
@@ -18,14 +17,9 @@ public class Card {
 	private final String sideA, sideB;
 	private int viewCount; // number of times viewed
 
-// private static data
-	private static final Random random = new Random();
-	private static int randomValue;
-
 // public static Comparators
 	public static final EaseBiasComparator easeBiasComparator = new EaseBiasComparator();
 	public static final LastSeenTimeComparator lastSeenTimeComparator = new LastSeenTimeComparator();
-	public static final RandomComparator randomComparator = new RandomComparator();
 	public static final SideAComparator sideAComparator = new SideAComparator();
 	public static final SideBComparator sideBComparator = new SideBComparator();
 	public static final ViewCountComparator viewCountComparator = new ViewCountComparator();
@@ -79,13 +73,6 @@ public class Card {
 		return new Card(sideA, sideB, easeBias, lastSeenTime, viewCount);
 	}
 
-	/**
-	 * Randomizes the static value used by the RandomComparator.
-	 */
-	public static void randomize() {
-		randomValue = random.nextInt();
-	}
-
 // public methods
 	public Card(String sideA, String sideB) {
 		this(sideA, sideB, 0, 0, 0);
@@ -97,7 +84,6 @@ public class Card {
 		this.sideA = sideA == null ? "" : sideA;
 		this.sideB = sideB == null ? "" : sideB;
 		this.viewCount = viewCount;
-		randomize();
 	}
 
 	public int getEaseBias() {
@@ -159,14 +145,6 @@ public class Card {
 			if(card1.lastSeenTime < card2.lastSeenTime) return -1;
 			if(card1.lastSeenTime == card2.lastSeenTime) return 0;
 			return 1;
-		}
-	}
-
-	private static class RandomComparator implements Comparator<Card> {
-		public int compare(Card card1, Card card2) {
-			int hash1 = card1.hashCode() ^ randomValue;
-			int hash2 = card2.hashCode() ^ randomValue;
-			return hash1 - hash2;
 		}
 	}
 

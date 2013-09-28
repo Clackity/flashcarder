@@ -1,21 +1,23 @@
 package flashcarder;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.PriorityQueue;
 
 /**
  * @author Atlee
  *
- * A set of Cards.
+ * A stack of Cards.
  * Supports sorting, though it isn't strictly required.
  *
  * Example:
- * 		CardStack cardSet = CardStack.createFromFile("somecards.txt");
- *	 	if(cardSet == null) throw new Exception("problem reading file");
+ * 		CardStack cardStack = CardStack.createFromFile("somecards.txt");
+ *	 	if(cardStack == null) throw new Exception("problem reading file");
+ *	 	cardStack.shuffle();
  *	 	CardStack seenCards = new CardStack();
- *		while(!cardSet.isEmpty()) {
- * 			Card card = cardSet.removeNextCard();
+ *		while(!cardStack.isEmpty()) {
+ * 			Card card = cardStack.removeNextCard();
  * 			// .. show card ...
  * 			card.setSeen(); // tell the card that we've seen it
  *			seenCards.addCard(card);
@@ -26,11 +28,11 @@ import java.util.PriorityQueue;
 public class CardStack {
 // defaults
 	private static final String CHARSET = "ISO-8859-1"; // important for reading and writing non-US characters
-	private static final Comparator<Card> COMPARATOR = Card.lastSeenTimeComparator;
-	private static final int INITIAL_CAPACITY = 11; // default PriorityQueue capacity
+//	private static final Comparator<Card> COMPARATOR = Card.lastSeenTimeComparator;
+//	private static final int INITIAL_CAPACITY = 11; // default PriorityQueue capacity
 
 // data
-	private PriorityQueue<Card> set;
+	private ArrayList<Card> stack;
 
 // public static methods
 	/**
@@ -39,20 +41,16 @@ public class CardStack {
 	 * @return A new CardStack or null if something goes wrong.
 	 */
 	public static CardStack createFromFile(String fileName) {
-		return createFromFile(fileName, COMPARATOR);
-	}
-
-	public static CardStack createFromFile(String fileName, Comparator<Card> cardSortingComparator) {
 		InputStreamReader inStream;
 		try { inStream = new InputStreamReader(new FileInputStream(fileName), CHARSET); }
 		catch(IOException e) { return null; }
 		BufferedReader bufferedReader = new BufferedReader(inStream);
 
-		PriorityQueue<Card> newSet = new PriorityQueue<Card>(INITIAL_CAPACITY, cardSortingComparator);
+		ArrayList<Card> newStack = new ArrayList<>();
 		for(;;) {
 			Card card = Card.createFromFile(bufferedReader);
 			if(card == null) break;
-			newSet.add(card);
+			newStack.add(card);
 		}
 
 		try {
@@ -60,97 +58,93 @@ public class CardStack {
 			inStream.close(); // just in case
 		} catch(IOException e) { /* don't care */ }
 
-		return new CardStack(newSet);
+		return new CardStack(newStack);
 	}
 
 // public methods
-	/**
-	 * Default constructor.
-	 * Starts empty and will sort by the default COMPARATOR defined up top.
-	 */
 	public CardStack() {
-		this(COMPARATOR);
-	}
-
-	/**
-	 * Particular sorting constructor.
-	 * Starts empty and will sort by the indicated Card comparator.
-	 * @param cardSortingComparator The Card comparator from the Card class.
-	 */
-	public CardStack(Comparator<Card> cardSortingComparator) {
-		this(new PriorityQueue<Card>(INITIAL_CAPACITY, cardSortingComparator));
+		this(new ArrayList<Card>());
 	}
 
 	/**
 	 * Share constructor.
-	 * Starts with the given PriorityQueue.
-	 * @param extantSet The PriorityQueue to share.
+	 * Starts with the given stack in the form of an ArrayList<Card>
+	 * @param extantStack The ArrayList to share.
 	 */
-	public CardStack(PriorityQueue<Card> extantSet) {
-		set = extantSet;
+	public CardStack(ArrayList<Card> extantStack) {
+		stack = extantStack;
 	}
 
 	/**
 	 * Copy constructor.
-	 * Starts with a shallow copy of the given set.
-	 * @param copyFromSet The CardStack to copy from.
+	 * Starts with a shallow copy of the given stack.
+	 * @param copyFromStack The CardStack to copy from.
 	 */
-	public CardStack(CardStack copyFromSet) {
-		if(copyFromSet != null && copyFromSet.set != null) {
-			set = new PriorityQueue<Card>(copyFromSet.set);
+	public CardStack(CardStack copyFromStack) {
+		if(copyFromStack != null && copyFromStack.stack != null) {
+			stack = new ArrayList<Card>(copyFromStack.stack);
 		} else {
-			set = new PriorityQueue<Card>(INITIAL_CAPACITY, COMPARATOR);
+			stack = new ArrayList<Card>();
 		}
 	}
 
 	/**
-	 * Adds a Card to this set in sorted order.
-	 * @param card The Card to add to this set.
+	 * Adds a Card to this stack in sorted order.
+	 * @param card The Card to add to this stack.
 	 */
 	public void addCard(Card card) {
-		set.add(card);
+		stack.add(card);
 	}
 
 	/**
-	 * Adds an entire CardStack to this set in sorted order.
-	 * @param cardStack The CardStack to add to this set.
+	 * Adds an entire CardStack to this stack in sorted order.
+	 * @param cardStack The CardStack to add to this stack.
 	 */
-	public void addCardSet(CardStack cardStack) {
-		if(cardStack != null) set.addAll(cardStack.set);
+	public void addCardStack(CardStack cardStack) {
+		if(cardStack != null) stack.addAll(cardStack.stack);
 	}
 
 	/**
 	 * Empties this stack of all cards.
 	 */
 	public void clear() {
-		set.clear();
+		stack.clear();
 	}
 
 	/**
 	 * @return The number of Cards in this stack.
 	 */
 	public int getCount() {
-		return set != null ? set.size() : 0;
+		return stack != null ? stack.size() : 0;
 	}
 
 	/**
-	 * Test emptiness of this set.
+	 * Test emptiness of this stack.
 	 * @return True if empty else false.
 	 */
 	public boolean isEmpty() {
-		return set.isEmpty();
+		return stack.isEmpty();
 	}
 
 	/**
-	 * Removes the next card from this set and returns it.
-	 * @return The card that was first in this set.
+	 * Removes the next card from this stack and returns it.
+	 * @return The card that was first in this stack.
 	 */
 	public Card removeNextCard() {
-		return set.poll();
+		if(stack.isEmpty()) return null;
+		return stack.remove(stack.size() - 1);
+	}
+
+	public void shuffle() {
+		Collections.shuffle(stack);
+	}
+
+	public void sort(Comparator<Card> cardComparator) {
+		Collections.sort(stack, cardComparator);
 	}
 
 	/**
-	 * Attempt to write this set to a file.
+	 * Attempt to write this stack to a file.
 	 * @param fileName The name of the file that will be created or overwritten.
 	 * @return True on success, false if something goes wrong.
 	 */
@@ -161,7 +155,7 @@ public class CardStack {
 		BufferedWriter bufferedWriter = new BufferedWriter(outStream);
 
 		boolean error = false;
-		for(Card card : set) {
+		for(Card card : stack) {
 			if(!card.writeToFile(bufferedWriter)) {
 				error = true;
 				break;
