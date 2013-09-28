@@ -6,25 +6,37 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39c41039-ea7a-40c5-9936-07f83781d1b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FlashCardPanel.java" afterPath="$PROJECT_DIR$/src/FlashCardPanel.java" />
+    <list default="true" id="39c41039-ea7a-40c5-9936-07f83781d1b7" name="Default" comment="awt is buggy">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/flashcarder/CardStackPanel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/flashcarder/StackProgressPanel.java" />
+      <change type="DELETED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\CardStackPanel.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jar/flashcarder.jar" afterPath="$PROJECT_DIR$/jar/flashcarder.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\Card.java" afterPath="$PROJECT_DIR$/src/flashcarder/Card.java" />
+      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\CardStack.java" afterPath="$PROJECT_DIR$/src/flashcarder/CardStack.java" />
+      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\FlashCardPanel.java" afterPath="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" />
+      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\FlashCarder.java" afterPath="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" />
+      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\KeyListenerDefault.java" afterPath="$PROJECT_DIR$/src/flashcarder/KeyListenerDefault.java" />
+      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\Main.java" afterPath="$PROJECT_DIR$/src/flashcarder/Main.java" />
+      <change type="MOVED" beforePath="S:\dev\Java\IntelliJ Projects\flashcarder\src\MouseListenerDefault.java" afterPath="$PROJECT_DIR$/src/flashcarder/MouseListenerDefault.java" />
     </list>
     <ignored path="flashcarder.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/FlashCarder.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380076748203" ignored="false" />
     <file path="$PROJECT_DIR$/../MatrixGUI/src/MatrixGUI.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379811142710" ignored="false" />
-    <file path="/fragment.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379919492896" ignored="false" />
+    <file path="/fragment.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380338449467" ignored="false" />
     <file path="/FlashCard.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379833790384" ignored="false" />
-    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380083690321" ignored="false" />
+    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380335485770" ignored="false" />
     <file path="/Card.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379892982142" ignored="false" />
     <file path="/Main.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379844855879" ignored="false" />
     <file path="/CardSet.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380051763231" ignored="false" />
-    <file path="/FlashCardPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380084293375" ignored="false" />
-    <file path="/CardStackPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380075895106" ignored="false" />
+    <file path="/FlashCardPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380085336386" ignored="false" />
+    <file path="/CardStackPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380337637577" ignored="false" />
     <file path="/a.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380071254339" ignored="false" />
     <file path="/sample.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380071263221" ignored="false" />
     <file path="/CardStack.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380073884788" ignored="false" />
+    <file path="/StackProgressPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380335943578" ignored="false" />
+    <file path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380338508731" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,45 +103,27 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/flashcarder/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="13" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
+            <state line="7" column="19" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlashCarder.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/FlashCarder.java">
+      <file leaf-file-name="FlashCarder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="354" column="0" selection-start="10681" selection-end="10681" vertical-scroll-proportion="0.41445783">
+            <state line="44" column="31" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlashCardPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FlashCardPanel.java">
+      <file leaf-file-name="demolist.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/demolist.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="0" selection-start="5627" selection-end="5627" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CardStack.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CardStack.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="7" selection-start="3203" selection-end="3203" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CardStackPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CardStackPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="52" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,21 +153,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/MouseListenerDefault.java" />
-        <option value="$PROJECT_DIR$/lists/numbers 0-10.txt" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/CardList.java" />
         <option value="$PROJECT_DIR$/src/FlashCard.java" />
-        <option value="$PROJECT_DIR$/src/Card.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/demolist.txt" />
         <option value="$PROJECT_DIR$/src/ComponentListenerDefault.java" />
         <option value="$PROJECT_DIR$/src/CardSet.java" />
-        <option value="$PROJECT_DIR$/src/CardStack.java" />
-        <option value="$PROJECT_DIR$/src/CardStackPanel.java" />
+        <option value="$PROJECT_DIR$/src/SolidProgressBar.java" />
         <option value="$PROJECT_DIR$/src/KeyListenerDefault.java" />
+        <option value="$PROJECT_DIR$/src/MouseListenerDefault.java" />
+        <option value="$PROJECT_DIR$/src/Card.java" />
+        <option value="$PROJECT_DIR$/src/CardStackPanel.java" />
+        <option value="$PROJECT_DIR$/src/CardStack.java" />
         <option value="$PROJECT_DIR$/src/FlashCardPanel.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/StackProgressPanel.java" />
+        <option value="$PROJECT_DIR$/src/flashcarder/StackProgressPanel.java" />
         <option value="$PROJECT_DIR$/src/FlashCarder.java" />
+        <option value="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" />
       </list>
     </option>
   </component>
@@ -181,8 +176,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1227" />
-    <option name="height" value="1018" />
+    <option name="x" value="-4" />
+    <option name="y" value="-4" />
+    <option name="width" value="1928" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -211,6 +208,62 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="jar">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="backup">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -273,61 +326,19 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="backup">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="flashcarder" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -341,8 +352,8 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -412,7 +423,7 @@
       <method />
     </configuration>
     <configuration default="false" name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="flashcarder.Main" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -546,30 +557,34 @@
       <created>1380083696509</created>
       <updated>1380083696509</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="awt is buggy">
+      <created>1380084871363</created>
+      <updated>1380084871363</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1227" height="1018" extended-state="0" />
+    <frame x="-4" y="-4" width="1928" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287827" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990878" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40021345" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2114237" sideWeight="0.6708861" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990878" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13820705" sideWeight="0.67160773" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -617,7 +632,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="it works more or less" />
+    <option name="LAST_COMMIT_MESSAGE" value="awt is buggy" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -643,6 +658,7 @@
     <MESSAGE value="better component resizing" />
     <MESSAGE value="new visual stacks" />
     <MESSAGE value="it works more or less" />
+    <MESSAGE value="awt is buggy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -656,14 +672,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FlashCarder.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="0" selection-start="1358" selection-end="1358" vertical-scroll-proportion="0.0">
           <folding />
@@ -690,70 +699,77 @@
         <state line="49" column="16" selection-start="975" selection-end="975" vertical-scroll-proportion="0.8096357" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/demolist.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="12" selection-start="406" selection-end="406" vertical-scroll-proportion="0.6556992" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backup/CardSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="52" selection-start="1245" selection-end="1245" vertical-scroll-proportion="-1.0575793">
+        <state line="40" column="52" selection-start="1245" selection-end="1245" vertical-scroll-proportion="-1.0575793" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MouseListenerDefault.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.12690952">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStackPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="30" selection-start="3470" selection-end="3470" vertical-scroll-proportion="0.021686748">
+        <state line="9" column="13" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/KeyListenerDefault.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
+        <state line="3" column="34" selection-start="88" selection-end="88" vertical-scroll-proportion="0.06345476">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CardStack.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="7" selection-start="3203" selection-end="3203" vertical-scroll-proportion="0.0">
+        <state line="34" column="13" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.33293557">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CardStackPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/StackProgressPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="52" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KeyListenerDefault.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/MouseListenerDefault.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="106" selection-end="106" vertical-scroll-proportion="0.12811388">
+        <state line="8" column="13" selection-start="132" selection-end="132" vertical-scroll-proportion="0.16921268">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FlashCardPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="0" selection-start="5627" selection-end="5627" vertical-scroll-proportion="0.0">
+        <state line="7" column="19" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FlashCarder.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="354" column="0" selection-start="10681" selection-end="10681" vertical-scroll-proportion="0.41445783">
+        <state line="44" column="31" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demolist.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

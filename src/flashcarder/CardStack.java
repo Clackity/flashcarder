@@ -1,3 +1,5 @@
+package flashcarder;
+
 import java.io.*;
 import java.util.Comparator;
 import java.util.PriorityQueue;

@@ -1,3 +1,5 @@
+package flashcarder;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -161,15 +163,15 @@ public class FlashCarder {
 		buttonPanel.setPreferredSize(new Dimension(1, 100));
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, MARGIN, MARGIN, MARGIN));
 
-		cardStackEasyPanel = new CardStackPanel("Easy Cards", Color.GREEN);
+		cardStackEasyPanel = new CardStackPanel("Easy Cards", Color.GREEN, false);
 		cardStackEasyPanel.addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleEasyStackAction(); }});
 		buttonPanel.add(cardStackEasyPanel);
 
-		cardStackWorkingPanel = new CardStackPanel("Fresh Cards", Color.BLUE);
+		cardStackWorkingPanel = new CardStackPanel("Fresh Cards", Color.BLUE, true);
 		cardStackWorkingPanel.addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleWorkingStackAction(); }});
 		buttonPanel.add(cardStackWorkingPanel);
 
-		cardStackHardPanel = new CardStackPanel("Hard Cards", Color.RED);
+		cardStackHardPanel = new CardStackPanel("Hard Cards", Color.RED, false);
 		cardStackHardPanel.addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleHardStackAction(); }});
 		buttonPanel.add(cardStackHardPanel);
 

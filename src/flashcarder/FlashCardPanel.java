@@ -1,5 +1,6 @@
+package flashcarder;
+
 import java.awt.*;
-import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
@@ -42,8 +43,8 @@ public class FlashCardPanel extends JPanel {
 	private static final float BAR_RATIO = 1.0f / 5.0f; // keep this less than 1.0 or beware
 	private static final Color COLOR_A = new Color(0.95f, 0.2f, 0.2f);
 	private static final Color COLOR_B = new Color(0.2f, 0.3f, 0.95f);
-	private static final String FONT_NAME = "Arial Bold";
-	private static final int FONT_STYLE = Font.PLAIN;
+	private static final String FONT_NAME = Font.SERIF;//"Arial Bold";
+	private static final int FONT_STYLE = Font.BOLD;
 	private static final int FONT_SIZE_MIN = 8; // these take effect in isFontSmallEnough(...)
 	private static final int FONT_SIZE_MAX = 120;
 	private static final Font FONT = new Font(FONT_NAME, FONT_STYLE, FONT_SIZE_MAX);
@@ -102,7 +103,6 @@ public class FlashCardPanel extends JPanel {
 
 		contentLabel = new JLabel("", JLabel.CENTER);
 		contentLabel.setAlignmentX(CENTER_ALIGNMENT);
-		//contentLabel.setVerticalAlignment(JLabel.CENTER);
 		JPanel contentPanel = new JPanel();
 		contentPanel.add(contentLabel);
 		add(contentLabel);
