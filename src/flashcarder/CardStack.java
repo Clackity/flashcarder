@@ -4,12 +4,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 /**
  * @author Atlee
  *
  * A stack of Cards.
- * Supports sorting, though it isn't strictly required.
  *
  * Example:
  * 		CardStack cardStack = CardStack.createFromFile("somecards.txt");
@@ -26,10 +26,11 @@ import java.util.Comparator;
  *
  */
 public class CardStack {
+// static helpers
+	private static Random random = new Random();
+
 // defaults
 	private static final String CHARSET = "ISO-8859-1"; // important for reading and writing non-US characters
-//	private static final Comparator<Card> COMPARATOR = Card.lastSeenTimeComparator;
-//	private static final int INITIAL_CAPACITY = 11; // default PriorityQueue capacity
 
 // data
 	private ArrayList<Card> stack;
@@ -89,7 +90,7 @@ public class CardStack {
 	}
 
 	/**
-	 * Adds a Card to this stack in sorted order.
+	 * Adds a Card to the top of this stack.
 	 * @param card The Card to add to this stack.
 	 */
 	public void addCard(Card card) {
@@ -97,7 +98,18 @@ public class CardStack {
 	}
 
 	/**
-	 * Adds an entire CardStack to this stack in sorted order.
+	 * Adds a Card to this stack in a random location,
+	 * but not at the top (unless the stack is empty).
+	 * @param card The Card to add.
+	 */
+	public void addCardRandomly(Card card) {
+		int where = 0;
+		if(stack.size() >= 2) where = random.nextInt(stack.size() - 2);
+		stack.add(where, card);
+	}
+
+	/**
+	 * Adds an entire CardStack to the top of this stack.
 	 * @param cardStack The CardStack to add to this stack.
 	 */
 	public void addCardStack(CardStack cardStack) {

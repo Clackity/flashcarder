@@ -6,13 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39c41039-ea7a-40c5-9936-07f83781d1b7" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Dev\Java\flashcarder\src\demolist.txt" afterPath="$PROJECT_DIR$/demolist.txt" />
+    <list default="true" id="39c41039-ea7a-40c5-9936-07f83781d1b7" name="Default" comment="refactored to use ArrayList instead of PriorityQueue">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jar/flashcarder.jar" afterPath="$PROJECT_DIR$/jar/flashcarder.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/flashcarder/Card.java" afterPath="$PROJECT_DIR$/src/flashcarder/Card.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/flashcarder/CardStack.java" afterPath="$PROJECT_DIR$/src/flashcarder/CardStack.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" afterPath="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" afterPath="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="flashcarder.iws" />
@@ -21,15 +19,15 @@
     <file path="$PROJECT_DIR$/../MatrixGUI/src/MatrixGUI.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379811142710" ignored="false" />
     <file path="/fragment.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380338675964" ignored="false" />
     <file path="/FlashCard.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379833790384" ignored="false" />
-    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380352367791" ignored="false" />
+    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380425353305" ignored="false" />
     <file path="/Card.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379892982142" ignored="false" />
     <file path="/Main.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379844855879" ignored="false" />
     <file path="/CardSet.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380051763231" ignored="false" />
     <file path="/FlashCardPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380085336386" ignored="false" />
     <file path="/CardStackPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380337637577" ignored="false" />
-    <file path="/a.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380338729249" ignored="false" />
+    <file path="/a.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380425190485" ignored="false" />
     <file path="/sample.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380071263221" ignored="false" />
-    <file path="/CardStack.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380352168304" ignored="false" />
+    <file path="/CardStack.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380353339215" ignored="false" />
     <file path="/StackProgressPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380335943578" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +48,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -86,7 +85,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -96,19 +94,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CardStack.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStack.java">
+      <file leaf-file-name="FlashCardPanel.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="5" selection-start="3565" selection-end="3568" vertical-scroll-proportion="0.20398593">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlashCarder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="266" column="23" selection-start="8335" selection-end="8335" vertical-scroll-proportion="0.0">
+            <state line="182" column="41" selection-start="6065" selection-end="6065" vertical-scroll-proportion="0.2672919">
               <folding />
             </state>
           </provider>
@@ -138,9 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ComponentListenerDefault.java" />
-        <option value="$PROJECT_DIR$/src/CardSet.java" />
-        <option value="$PROJECT_DIR$/src/SolidProgressBar.java" />
         <option value="$PROJECT_DIR$/src/KeyListenerDefault.java" />
         <option value="$PROJECT_DIR$/src/MouseListenerDefault.java" />
         <option value="$PROJECT_DIR$/src/Card.java" />
@@ -154,6 +140,9 @@
         <option value="$PROJECT_DIR$/src/flashcarder/Card.java" />
         <option value="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" />
         <option value="$PROJECT_DIR$/src/flashcarder/CardStack.java" />
+        <option value="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -193,6 +182,148 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="jar">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="backup">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="scopes">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="copyright">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="flashcarder">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="artifacts">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,66 +382,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="flashcarder">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="jar">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -561,7 +632,11 @@
       <created>1380338611423</created>
       <updated>1380338611423</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="refactored to use ArrayList instead of PriorityQueue">
+      <created>1380352396548</created>
+      <updated>1380352396548</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -573,7 +648,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40021345" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14140876" sideWeight="0.67160773" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14781217" sideWeight="0.67160773" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990878" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -632,7 +707,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="custom progress panel&#10;put all in package" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored to use ArrayList instead of PriorityQueue" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -660,6 +735,7 @@
     <MESSAGE value="it works more or less" />
     <MESSAGE value="awt is buggy" />
     <MESSAGE value="custom progress panel&#10;put all in package" />
+    <MESSAGE value="refactored to use ArrayList instead of PriorityQueue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -673,59 +749,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="266" column="23" selection-start="8335" selection-end="8335" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1358" selection-end="1358" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="53" selection-start="77" selection-end="77" vertical-scroll-proportion="0.04230317" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/awt/event/ActionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="16" selection-start="975" selection-end="975" vertical-scroll-proportion="0.8096357" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStackPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/flashcarder/KeyListenerDefault.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="34" selection-start="88" selection-end="88" vertical-scroll-proportion="0.06345476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.33293557">
           <folding />
         </state>
       </provider>
@@ -765,14 +791,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="266" column="23" selection-start="8335" selection-end="8335" vertical-scroll-proportion="0.0">
+        <state line="72" column="44" selection-start="1947" selection-end="1947" vertical-scroll-proportion="0.3760282">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="5" selection-start="3565" selection-end="3568" vertical-scroll-proportion="0.20398593">
+        <state line="34" column="7" selection-start="894" selection-end="894" vertical-scroll-proportion="0.71915394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/.name">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/scopes/scope_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="20" selection-end="20" vertical-scroll-proportion="0.021101993" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="41" selection-start="6065" selection-end="6065" vertical-scroll-proportion="0.2672919">
           <folding />
         </state>
       </provider>
@@ -855,6 +923,17 @@
         </settings>
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
         <settings>
           <splitter-proportions>
             <option name="proportions">

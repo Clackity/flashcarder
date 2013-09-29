@@ -88,7 +88,6 @@ public class FlashCardPanel extends JPanel {
 	 */
 	public FlashCardPanel(int width, int height, Color colorA, Color colorB) {
 		setLayout(null);
-		//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(width, height));
 
 		this.colorA = colorA;
@@ -181,7 +180,7 @@ public class FlashCardPanel extends JPanel {
 		FontMetrics metrics = new FontMetrics(font) {};
 		Rectangle2D textBounds = metrics.getStringBounds(text, null);
 		Dimension panelBounds = contentLabel.getSize();
-		return textBounds.getWidth() <= panelBounds.getWidth()
+		return textBounds.getWidth() + 4 <= panelBounds.getWidth()
 			&& textBounds.getHeight() <= panelBounds.getHeight()
 			&& textBounds.getHeight() * 8.0 <= panelBounds.getWidth();
 	}

@@ -70,7 +70,7 @@ public class FlashCarder {
 	 */
 	private void putCardInWorkingStack() {
 		if(cardStackWorking != null && card != null) {
-			cardStackWorking.addCard(card);
+			cardStackWorking.addCardRandomly(card);
 			cardStackWorkingPanel.setCurrentCount(cardStackWorking.getCount());
 			card = null;
 		}
