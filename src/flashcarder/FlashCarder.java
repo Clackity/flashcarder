@@ -295,7 +295,9 @@ public class FlashCarder {
 			cardStackWorkingPanel.setCapacity(totalCards);
 			cardStackWorkingPanel.setCurrentCount(cardStackWorking.getCount());
 			cardStackEasyPanel.setCapacity(totalCards);
+			cardStackEasyPanel.setCurrentCount(0);
 			cardStackHardPanel.setCapacity(totalCards);
+			cardStackHardPanel.setCurrentCount(0);
 			cardStackHard = new CardStack();
 			cardStackEasy = new CardStack();
 			modified = false;

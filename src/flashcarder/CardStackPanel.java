@@ -9,8 +9,8 @@ import java.awt.*;
  */
 public class CardStackPanel extends JPanel {
 // Look & Feel constants
-	private static final int BORDER_LINE_WIDTH = 2;
-	private static final Color BORDER_LINE_COLOR = new Color(0.95f, 0.2f, 0.2f);
+	private static final int BORDER_LINE_WIDTH = 3;
+	private static final Color BORDER_LINE_COLOR = Color.BLACK;
 	private static final int BORDER_SPACE_WIDTH = 2;
 	private static final int BORDER_WIDTH = BORDER_LINE_WIDTH + BORDER_SPACE_WIDTH;
 	private static final Border OUTER_BORDER = BorderFactory.createLineBorder(BORDER_LINE_COLOR, BORDER_LINE_WIDTH);
