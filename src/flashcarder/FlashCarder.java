@@ -19,7 +19,6 @@ public class FlashCarder {
 	private static final Color DONE_STACK_COLOR = new Color(0.25f, 0.5f, 0.25f);
 	private static final Color TODO_STACK_COLOR = new Color(0.30f, 0.4f, 0.7f);
 
-
 // GUI fields
 	private JFrame frame;
 	private JLabel fileNameLabel;
@@ -46,6 +45,7 @@ public class FlashCarder {
 		frame = makeFrame();
 		clearCards();
 		frame.setVisible(true);
+		handleFileOpen();
 	}
 
 // private methods
@@ -161,7 +161,7 @@ public class FlashCarder {
 // private GUI methods
 	private JPanel makeBottomButtonPanel() {
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 3, MARGIN * 3, MARGIN * 3));
-		buttonPanel.setPreferredSize(new Dimension(1, 100));
+		buttonPanel.setPreferredSize(new Dimension(1, 150));
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, MARGIN, MARGIN, MARGIN));
 
 		cardStackToPanel = new CardStackPanel("Done", DONE_STACK_COLOR, false);
@@ -268,9 +268,16 @@ public class FlashCarder {
 // private GUI helper methods
 	private void setFileName(String newFileName) {
 		fileName = newFileName;
-		String prefix = modified ? "*" : "";
-		String suffix = fileName == null ? "(no file opened)" : fileName;
-		fileNameLabel.setText(prefix + suffix);
+		if(fileName == null) {
+			fileNameLabel.setText("(no file opened)");
+		} else {
+			File file = new File(fileName);
+			String shortName = file.getName().replaceFirst("[.][^.]+$", "");
+			fileNameLabel.setText(shortName);
+		}
+		//String prefix = modified ? "*" : "";
+		//String suffix = fileName == null ? "(no file opened)" : fileName;
+		//fileNameLabel.setText(prefix + suffix);
 	}
 
 // private GUI handler methods

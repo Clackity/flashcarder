@@ -98,13 +98,19 @@ public class CardStack {
 	}
 
 	/**
-	 * Adds a Card to this stack in a random location,
-	 * but not at the top (unless the stack is empty).
+	 * Adds a Card to this stack in a random location within the beginning half.
+	 * The idea is to prevent this card from resurfacing soon, but without otherwise
+	 * leaving a pattern.
 	 * @param card The Card to add.
 	 */
+//	public void addCardRandomly(Card card) {
+//		int where = 0;
+//		if(stack.size() >= 2) where = random.nextInt(stack.size() - 2);
+//		stack.add(where, card);
+//	}
 	public void addCardRandomly(Card card) {
 		int where = 0;
-		if(stack.size() >= 2) where = random.nextInt(stack.size() - 2);
+		if(stack.size() >= 2) where = random.nextInt((stack.size() - 2) / 2);
 		stack.add(where, card);
 	}
 
