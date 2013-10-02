@@ -48,6 +48,7 @@ public class FlashCardPanel extends JPanel {
 	private static final int FONT_SIZE_MIN = 8; // these take effect in isFontSmallEnough(...)
 	private static final int FONT_SIZE_MAX = 120;
 	private static final Font FONT = new Font(FONT_NAME, FONT_STYLE, FONT_SIZE_MAX);
+	private static final float TEXT_MARGIN_RATIO = 1.0f / 50.0f; // minimum space on left/right of text
 
 // UI elements
 	private JPanel colorBar;
@@ -180,7 +181,7 @@ public class FlashCardPanel extends JPanel {
 		FontMetrics metrics = new FontMetrics(font) {};
 		Rectangle2D textBounds = metrics.getStringBounds(text, null);
 		Dimension panelBounds = contentLabel.getSize();
-		return textBounds.getWidth() + 4 <= panelBounds.getWidth()
+		return textBounds.getWidth() <= panelBounds.getWidth() * (1.0f - TEXT_MARGIN_RATIO)
 			&& textBounds.getHeight() <= panelBounds.getHeight()
 			&& textBounds.getHeight() * 8.0 <= panelBounds.getWidth();
 	}

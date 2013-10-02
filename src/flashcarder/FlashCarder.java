@@ -7,23 +7,26 @@ import javax.swing.*;
 
 /**
  * @author Atlee
- * @version 2013.09.24
+ * @version 2013.10.01
  */
 public class FlashCarder {
 	private static final String TITLE = "FlashCarder";
-	private static final String VERSION = "Version 2013.09.24";
+	private static final String VERSION = "Version 2013.10.01";
 
 // Look & Feel constants
 	private static final String LOOK_AND_FEEL = UIManager.getSystemLookAndFeelClassName();
 	private static final int MARGIN = 4;
+	private static final Color DONE_STACK_COLOR = new Color(0.25f, 0.5f, 0.25f);
+	private static final Color TODO_STACK_COLOR = new Color(0.30f, 0.4f, 0.7f);
+
 
 // GUI fields
 	private JFrame frame;
 	private JLabel fileNameLabel;
 	private FlashCardPanel flashCardPanel;
-	private CardStackPanel cardStackWorkingPanel;
-	private CardStackPanel cardStackHardPanel;
-	private CardStackPanel cardStackEasyPanel;
+	private CardStackPanel cardStackFromPanel;
+//	private CardStackPanel cardStackHardPanel;
+	private CardStackPanel cardStackToPanel;
 
 // file fields
 	private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
@@ -31,9 +34,9 @@ public class FlashCarder {
 
 // data fields
 	private Card card;
-	private CardStack cardStackWorking; // pull cards from here
-	private CardStack cardStackHard; // put difficult cards here when done
-	private CardStack cardStackEasy; // put easy cards here when done
+	private CardStack cardStackFrom; // pull cards from here
+//	private CardStack cardStackHard; // put difficult cards here when done
+	private CardStack cardStackTo; // put easy cards here when done
 	private boolean modified; // whether the file ought to be saved or not
 	private boolean showSideBFirst;
 
@@ -49,58 +52,58 @@ public class FlashCarder {
 	private void clearCards() {
 		showSideBFirst = false;
 		setCard(null);
-		cardStackWorking = null;
-		cardStackHard = null;
-		cardStackEasy = null;
+		cardStackFrom = null;
+//		cardStackHard = null;
+		cardStackTo = null;
 		modified = false;
 	}
 
 	private boolean getNextCard() {
-		if(cardStackWorking != null) {
-			setCard(cardStackWorking.removeNextCard());
-			cardStackWorkingPanel.setCurrentCount(cardStackWorking.getCount());
+		if(cardStackFrom != null) {
+			setCard(cardStackFrom.removeNextCard());
+			cardStackFromPanel.setCurrentCount(cardStackFrom.getCount());
 			return card != null;
 		}
 		return false;
 	}
 
 	/**
-	 * Puts the current Card back into the working set.
+	 * Puts the current Card back into the From set.
 	 * Does not mark the card as seen.
 	 */
-	private void putCardInWorkingStack() {
-		if(cardStackWorking != null && card != null) {
-			cardStackWorking.addCardRandomly(card);
-			cardStackWorkingPanel.setCurrentCount(cardStackWorking.getCount());
+	private void putCardInFromStack() {
+		if(cardStackFrom != null && card != null) {
+			cardStackFrom.addCardRandomly(card);
+			cardStackFromPanel.setCurrentCount(cardStackFrom.getCount());
 			card = null;
 		}
 	}
 
-	/**
-	 * Puts the current Card into the To Review set.
-	 * Marks the card as seen and not easy.
-	 * Doesn't call Card.randomize().
-	 */
-	private void putCardInHardStack() {
-		if(cardStackHard != null && card != null) {
-			card.setSeen(false);
-			cardStackHard.addCard(card);
-			cardStackHardPanel.setCurrentCount(cardStackHard.getCount());
-			card = null;
-			modified = true;
-		}
-	}
+//	/**
+//	 * Puts the current Card into the To Review set.
+//	 * Marks the card as seen and not easy.
+//	 * Doesn't call Card.randomize().
+//	 */
+//	private void putCardInHardStack() {
+//		if(cardStackHard != null && card != null) {
+//			card.setSeen(false);
+//			cardStackHard.addCard(card);
+//			cardStackHardPanel.setCurrentCount(cardStackHard.getCount());
+//			card = null;
+//			modified = true;
+//		}
+//	}
 
 	/**
-	 * Puts the current Card into the Retired set.
+	 * Puts the current Card into the To set.
 	 * Marks the card as seen and easy.
 	 * Doesn't call Card.randomize().
 	 */
-	private void putCardInEasyStack() {
-		if(cardStackEasy != null && card != null) {
-			card.setSeen(true);
-			cardStackEasy.addCard(card);
-			cardStackEasyPanel.setCurrentCount(cardStackEasy.getCount());
+	private void putCardInToStack() {
+		if(cardStackTo != null && card != null) {
+			//card.setSeen(true);
+			cardStackTo.addCard(card);
+			cardStackToPanel.setCurrentCount(cardStackTo.getCount());
 			card = null;
 			modified = true;
 		}
@@ -133,11 +136,11 @@ public class FlashCarder {
 	}
 
 	private boolean saveToFile(String fileName) {
-		if(cardStackWorking == null) return true; // nothing saved
+		if(cardStackFrom == null) return true; // nothing saved
 
-		CardStack setToWrite = new CardStack(cardStackWorking);
-		setToWrite.addCardStack(cardStackHard);
-		setToWrite.addCardStack(cardStackEasy);
+		CardStack setToWrite = new CardStack(cardStackFrom);
+//		setToWrite.addCardStack(cardStackHard);
+		setToWrite.addCardStack(cardStackTo);
 		if(card != null) setToWrite.addCard(card);
 
 		if(!setToWrite.writeToFile(fileName)) {
@@ -161,17 +164,25 @@ public class FlashCarder {
 		buttonPanel.setPreferredSize(new Dimension(1, 100));
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, MARGIN, MARGIN, MARGIN));
 
-		cardStackEasyPanel = new CardStackPanel("Easy Cards", Color.GREEN, false);
-		cardStackEasyPanel.addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleEasyStackAction(); }});
-		buttonPanel.add(cardStackEasyPanel);
+		cardStackToPanel = new CardStackPanel("Done", DONE_STACK_COLOR, false);
+		cardStackToPanel.addMouseListener(new MouseListenerDefault() {
+			public void mousePressed(MouseEvent e) {
+				handleToStackAction();
+			}
+		});
+		buttonPanel.add(cardStackToPanel);
 
-		cardStackWorkingPanel = new CardStackPanel("Fresh Cards", Color.BLUE, true);
-		cardStackWorkingPanel.addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleWorkingStackAction(); }});
-		buttonPanel.add(cardStackWorkingPanel);
+		cardStackFromPanel = new CardStackPanel("To Do", TODO_STACK_COLOR, true);
+		cardStackFromPanel.addMouseListener(new MouseListenerDefault() {
+			public void mousePressed(MouseEvent e) {
+				handleFromStackAction();
+			}
+		});
+		buttonPanel.add(cardStackFromPanel);
 
-		cardStackHardPanel = new CardStackPanel("Hard Cards", Color.RED, false);
-		cardStackHardPanel.addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleHardStackAction(); }});
-		buttonPanel.add(cardStackHardPanel);
+//		cardStackHardPanel = new CardStackPanel("Hard Cards", Color.RED, false);
+//		cardStackHardPanel.addMouseListener(new MouseListenerDefault() { public void mousePressed(MouseEvent e) { handleHardStackAction(); }});
+//		buttonPanel.add(cardStackHardPanel);
 
 		return buttonPanel;
 	}
@@ -220,16 +231,16 @@ public class FlashCarder {
 		item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, SHORTCUT_MASK));
 		item.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleFileOpen(); }});
 		menu.add(item);
-		// File / Save
-		item = new JMenuItem("Save");
-		item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, SHORTCUT_MASK));
-		item.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleFileSave(); }});
-		menu.add(item);
-		// File / Save As
-		item = new JMenuItem("Save As...");
-		item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, SHORTCUT_MASK));
-		item.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleFileSaveAs(); }});
-		menu.add(item);
+//		// File / Save
+//		item = new JMenuItem("Save");
+//		item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, SHORTCUT_MASK));
+//		item.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleFileSave(); }});
+//		menu.add(item);
+//		// File / Save As
+//		item = new JMenuItem("Save As...");
+//		item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, SHORTCUT_MASK));
+//		item.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { handleFileSaveAs(); }});
+//		menu.add(item);
 		// File / Exit
 		item = new JMenuItem("Exit");
 		item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, SHORTCUT_MASK));
@@ -264,13 +275,13 @@ public class FlashCarder {
 
 // private GUI handler methods
 	private void handleQuitRequest() {
-		saveProgress();
+		//saveProgress();
 
 		System.exit(0);
 	}
 
 	private void handleFileOpen() {
-		saveProgress();
+		//saveProgress();
 
 		setFileName(null);
 
@@ -282,24 +293,24 @@ public class FlashCarder {
 		} else return;
 
 		clearCards();
-		cardStackWorking = CardStack.createFromFile(chosenFileName);
-		if(cardStackWorking == null) {
+		cardStackFrom = CardStack.createFromFile(chosenFileName);
+		if(cardStackFrom == null) {
 			JOptionPane.showMessageDialog(frame
 				,new JLabel("There was a problem opening " + chosenFileName + ", sorry.")
 				,"File / Open problem"
 				,JOptionPane.ERROR_MESSAGE
 			);
 		} else {
-			cardStackWorking.shuffle();
-			int totalCards = cardStackWorking.getCount();
-			cardStackWorkingPanel.setCapacity(totalCards);
-			cardStackWorkingPanel.setCurrentCount(cardStackWorking.getCount());
-			cardStackEasyPanel.setCapacity(totalCards);
-			cardStackEasyPanel.setCurrentCount(0);
-			cardStackHardPanel.setCapacity(totalCards);
-			cardStackHardPanel.setCurrentCount(0);
-			cardStackHard = new CardStack();
-			cardStackEasy = new CardStack();
+			cardStackFrom.shuffle();
+			int totalCards = cardStackFrom.getCount();
+			cardStackFromPanel.setCapacity(totalCards);
+			cardStackFromPanel.setCurrentCount(cardStackFrom.getCount());
+			cardStackToPanel.setCapacity(totalCards);
+			cardStackToPanel.setCurrentCount(0);
+//			cardStackHardPanel.setCapacity(totalCards);
+//			cardStackHardPanel.setCurrentCount(0);
+//			cardStackHard = new CardStack();
+			cardStackTo = new CardStack();
 			modified = false;
 			setFileName(chosenFileName);
 			getNextCard();
@@ -339,34 +350,35 @@ public class FlashCarder {
 		JOptionPane.showMessageDialog(frame, TITLE + "\n" + VERSION, "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	private void handleEasyStackAction() {
-		putCardInEasyStack();
+	private void handleToStackAction() {
+		putCardInToStack();
 		getNextCard();
 	}
 
-	private void handleWorkingStackAction() {
-		putCardInWorkingStack();
+	private void handleFromStackAction() {
+		putCardInFromStack();
 		getNextCard();
 	}
 
-	private void handleHardStackAction() {
-		putCardInHardStack();
-		getNextCard();
-	}
+//	private void handleHardStackAction() {
+//		putCardInHardStack();
+//		getNextCard();
+//	}
 
 	private void handleKeyPressed(KeyEvent e) {
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_LEFT:
 			case KeyEvent.VK_KP_LEFT:
-				handleEasyStackAction();
+				handleToStackAction();
 				break;
 			case KeyEvent.VK_RIGHT:
 			case KeyEvent.VK_KP_RIGHT:
-				handleHardStackAction();
+				//handleHardStackAction();
+				handleFromStackAction();
 				break;
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_KP_DOWN:
-				handleWorkingStackAction();
+				handleFromStackAction();
 				break;
 			case KeyEvent.VK_UP:
 			case KeyEvent.VK_KP_UP:

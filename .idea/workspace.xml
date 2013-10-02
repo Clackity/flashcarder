@@ -6,9 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39c41039-ea7a-40c5-9936-07f83781d1b7" name="Default" comment="">
+    <list default="true" id="39c41039-ea7a-40c5-9936-07f83781d1b7" name="Default" comment="thinking of changing stuff a bit...">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jar/flashcarder.jar" afterPath="$PROJECT_DIR$/jar/flashcarder.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/flashcarder/CardStackPanel.java" afterPath="$PROJECT_DIR$/src/flashcarder/CardStackPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" afterPath="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" afterPath="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -18,11 +18,11 @@
     <file path="$PROJECT_DIR$/../MatrixGUI/src/MatrixGUI.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379811142710" ignored="false" />
     <file path="/fragment.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380338675964" ignored="false" />
     <file path="/FlashCard.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379833790384" ignored="false" />
-    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380690432540" ignored="false" />
+    <file path="/Dummy.txt" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380690914452" ignored="false" />
     <file path="/Card.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379892982142" ignored="false" />
     <file path="/Main.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1379844855879" ignored="false" />
     <file path="/CardSet.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380051763231" ignored="false" />
-    <file path="/FlashCardPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380085336386" ignored="false" />
+    <file path="/FlashCardPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380691288545" ignored="false" />
     <file path="/CardStackPanel.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380337637577" ignored="false" />
     <file path="/a.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380425190485" ignored="false" />
     <file path="/sample.java" changelist="39c41039-ea7a-40c5-9936-07f83781d1b7" time="1380071263221" ignored="false" />
@@ -93,28 +93,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CardStack.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStack.java">
+      <file leaf-file-name="FlashCardPanel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="13" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CardStackPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStackPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="25" selection-start="1242" selection-end="1242" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StackProgressPanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/flashcarder/StackProgressPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="5" selection-start="1293" selection-end="1293" vertical-scroll-proportion="0.0">
+            <state line="8" column="3" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -123,7 +105,7 @@
       <file leaf-file-name="FlashCarder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="291" column="16" selection-start="8951" selection-end="8951" vertical-scroll-proportion="6.155112">
+            <state line="13" column="63" selection-start="297" selection-end="297" vertical-scroll-proportion="0.21151586">
               <folding />
             </state>
           </provider>
@@ -164,10 +146,10 @@
         <option value="$PROJECT_DIR$/src/FlashCarder.java" />
         <option value="$PROJECT_DIR$/src/flashcarder/Card.java" />
         <option value="$PROJECT_DIR$/src/flashcarder/CardStack.java" />
-        <option value="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/flashcarder/CardStackPanel.java" />
+        <option value="$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java" />
         <option value="$PROJECT_DIR$/src/flashcarder/FlashCarder.java" />
       </list>
     </option>
@@ -596,7 +578,11 @@
       <created>1380425755862</created>
       <updated>1380425755862</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="thinking of changing stuff a bit...">
+      <created>1380690577121</created>
+      <updated>1380690577121</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -667,7 +653,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothing major" />
+    <option name="LAST_COMMIT_MESSAGE" value="thinking of changing stuff a bit..." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -697,6 +683,7 @@
     <MESSAGE value="custom progress panel&#10;put all in package" />
     <MESSAGE value="refactored to use ArrayList instead of PriorityQueue" />
     <MESSAGE value="nothing major" />
+    <MESSAGE value="thinking of changing stuff a bit..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -771,37 +758,37 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/StackProgressPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="9" selection-start="5800" selection-end="5800" vertical-scroll-proportion="2.1207502">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="13" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
+        <state line="77" column="52" selection-start="1920" selection-end="1920" vertical-scroll-proportion="0.45240894">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStackPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="25" selection-start="1242" selection-end="1242" vertical-scroll-proportion="0.0">
+        <state line="26" column="25" selection-start="1242" selection-end="1242" vertical-scroll-proportion="0.15628672">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flashcarder/StackProgressPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/CardStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="5" selection-start="1293" selection-end="1293" vertical-scroll-proportion="0.0">
+        <state line="27" column="13" selection-start="689" selection-end="689" vertical-scroll-proportion="0.021151586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCardPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="3" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/flashcarder/FlashCarder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="291" column="16" selection-start="8951" selection-end="8951" vertical-scroll-proportion="6.155112">
+        <state line="13" column="63" selection-start="297" selection-end="297" vertical-scroll-proportion="0.21151586">
           <folding />
         </state>
       </provider>
