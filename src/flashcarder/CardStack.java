@@ -47,7 +47,7 @@ public class CardStack {
 		catch(IOException e) { return null; }
 		BufferedReader bufferedReader = new BufferedReader(inStream);
 
-		ArrayList<Card> newStack = new ArrayList<>();
+		ArrayList<Card> newStack = new ArrayList<Card>();
 		for(;;) {
 			Card card = Card.createFromFile(bufferedReader);
 			if(card == null) break;
@@ -110,7 +110,7 @@ public class CardStack {
 //	}
 	public void addCardRandomly(Card card) {
 		int where = 0;
-		if(stack.size() >= 2) where = random.nextInt((stack.size() - 2) / 2);
+		if(stack.size() > 2) where = random.nextInt(stack.size() / 2);
 		stack.add(where, card);
 	}
 
